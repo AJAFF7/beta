@@ -1,0 +1,75 @@
+{
+  "name": "Alfa",
+  "version": "1.0.0",
+  "description": "Electron app",
+  "main": "main.js",
+  "author": "AJAFF",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "postinstall": "electron-builder install-app-deps",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "com.ajaff.alfa",
+    "productName": "Alfa",
+    "asar": true,
+    "files": [
+      "main.js",
+      "server.js",
+      "build/**/*",
+      "package.json",
+      {
+        "from": "server",
+        "to": "server"
+      }
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "assets"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns"
+    },
+    "linux": {
+      "target": "deb",
+      "icon": "assets/icon.png",
+      "category": "Utility",
+      "maintainer": "AJAFF <ajs-engineer.com>",
+      "synopsis": "Alfa - Electron-based network tool"
+    }
+  },
+  "dependencies": {
+    "@kubernetes/client-node": "^1.0.0",
+    "amqplib": "^0.10.5",
+    "axios": "^1.10.0",
+    "bcrypt": "^6.0.0",
+    "cheerio": "^1.1.0",
+    "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "http-proxy-middleware": "^3.0.5",
+    "jsonwebtoken": "^9.0.2",
+    "local-devices": "^4.0.0",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.1",
+    "node-fetch": "^2.7.0",
+    "ps-node": "^0.1.6",
+    "request": "^2.88.2",
+    "socket.io": "^4.8.1",
+    "sudo": "^1.0.3",
+    "sudo-prompt": "^9.2.1",
+    "winston": "^3.17.0",
+    "ws": "^8.18.1",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "electron": "^29.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}

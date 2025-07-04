@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Electron App</title>
+        <style>
+            /* Set background image, disable scrolling, and apply font styling */
+            body {
+                background-image: url("file:///C:/Users/jaff/Environments/Alfa/resources/icons/"); /* k8s-bg.png */
+                background-size: cover;
+                background-position: center;
+                border-radius: 16px;
+                margin: 0;
+                height: 100vh;
+                font-family:
+                    "Courier New", Courier, monospace; /* Monospace font for logs */
+                overflow: hidden !important; /* Disable scrolling */
+                border-radius: 12px; /* Rounded corners for the Electron window */
+            }
+
+            /* Log container styles */
+            #log-container {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                bottom: 10px;
+                /* background-color: rgba(
+                    0,
+                    0,
+                    0,
+                    0.7
+                );  */
+                color: white;
+                overflow-y: auto; /* Enable scrolling within log container */
+                padding: 10px;
+                font-size: 17px;
+                border-radius: 8px; /* Rounded corners */
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Soft shadow effect */
+                max-height: calc(
+                    100vh - 20px
+                ); /* Ensure log container stays within the window */
+            }
+
+            /* Add space between log messages */
+            #log-container div {
+                margin-bottom: 5px;
+                color: #ffffdc; /* Set the log message color to #FFFFDC */
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Log container to display messages from the main process -->
+        <div id="log-container"></div>
+
+        <script>
+            // Listen for log messages from the main process and display them in the log container
+            window.electron.ipcRenderer.on("log-message", (message) => {
+                const logContainer = document.getElementById("log-container");
+                const logElement = document.createElement("div");
+                logElement.textContent = message;
+                logContainer.appendChild(logElement);
+
+                // Scroll to the bottom to show the latest logs
+                logContainer.scrollTop = logContainer.scrollHeight;
+            });
+        </script>
+    </body>
+</html>
