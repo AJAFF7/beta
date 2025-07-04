@@ -1,4 +1,0 @@
-{"level":"info","message":"Server is running on port 3535"}
-{"level":"info","message":"kubectl proxy 8001 is running"}
-{"level":"info","message":"Attempting to apply configuration for deployment: crm"}
-{"level":"info","message":"crm configuration applied successfully"}
