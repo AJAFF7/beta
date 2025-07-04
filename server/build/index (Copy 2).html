@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>K8s App</title>
+    <style>
+      /* Full-screen loader */
+      .loading-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #212121;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 10;
+      }
+
+      /* You can customize this spinner */
+      .spinner {
+        border: 0px solid rgba(255, 255, 255, 0.3);
+        border-top: 1px solid #61AA88;
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Ensure root container is hidden until React is ready */
+      #root {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loading-screen">
+      <div class="spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // Once React is ready to be displayed, hide the loading screen and show the root
+      window.onload = function () {
+        const rootElement = document.getElementById('root');
+        const loadingScreen = document.querySelector('.loading-screen');
+
+        // Wait until React is loaded and ready
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';  // Hide loading screen
+          rootElement.style.display = 'block';   // Show the React app
+        }, 1000);  // Adjust this delay as per your needs
+      };
+    </script>
+  </body>
+</html>
+

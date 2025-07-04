@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Kubernetes Monitoring Dashboard" />
+
+    <!-- Icons & Manifest -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+
+    <title>K8s App</title>
+
+    <style>
+      /* Full-Screen Loading Screen */
+      /* .loading-screen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #212121; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        z-index: 10;
+      } */
+
+      .loading-screen {
+ 
+  /* background-color: #fff;  */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10;
+
+  /* Optional: center it absolutely on screen */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+}
+
+      /* Spinner */
+      .spinner {
+        border: 0px solid rgba(255, 255, 255, 0.3);
+        border-top: 1px solid #ce0000; /* #61AA88 */
+        border-radius: 50%;
+        width: 110px;
+        height: 110px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      /* Hide the React App Until Loaded */
+      #root {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- React App -->
+    <div id="root"></div>
+
+    <script>
+      // Hide loading screen once React is ready
+      window.onload = function () {
+        const rootElement = document.getElementById('root');
+        const loadingScreen = document.querySelector('.loading-screen');
+
+        setTimeout(() => {
+          loadingScreen.style.display = 'none';  // Hide loading screen
+          rootElement.style.display = 'block';   // Show React app
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>
+
